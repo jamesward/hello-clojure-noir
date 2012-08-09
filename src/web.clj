@@ -1,10 +1,9 @@
 (ns web
-  (:use [ring.adapter.jetty :only [run-jetty]]))
+  (:use
+    compojure.core
+    ring.adapter.jetty))
 
-(defn app [req]
-  {:status 200
-   :headers {"Content-Type" "text/plain"}
-   :body "Hello, world"})
+(defroutes app-routes
+  (GET "/" [] "hello, world"))
 
-(defn -main [port]
-  (run-jetty app {:port (Integer. port)}))
+(run-jetty app-routes {:port (or (System/getenv "PORT") 8080)})

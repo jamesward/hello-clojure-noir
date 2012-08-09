@@ -1,1 +1,1 @@
-web: lein trampoline run -m web $PORT
+web: lein trampoline run
