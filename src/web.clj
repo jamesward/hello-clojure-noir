@@ -1,10 +1,7 @@
 (ns web
-  (:use
-    compojure.core
-    ring.adapter.jetty))
+  (:use noir.core)
+  (:require [noir.server :as server]))
 
-(defroutes app-routes
-  (GET "/" [] "hello, world"))
+(defpage "/" [] "hello, world")
 
-(run-jetty app-routes
-  {:port (Integer/parseInt (or (System/getenv "PORT") "8080"))})
+(server/start (Integer/parseInt (or (System/getenv "PORT") "8080")))
