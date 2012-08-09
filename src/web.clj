@@ -6,4 +6,5 @@
 (defroutes app-routes
   (GET "/" [] "hello, world"))
 
-(run-jetty app-routes {:port (or (System/getenv "PORT") 8080)})
+(run-jetty app-routes
+  {:port (Integer/parseInt (or (System/getenv "PORT") "8080"))})
